@@ -1,32 +1,24 @@
-# Prerequisites
-*.d
+#include<iostream>
+#include<string>
+#include<sstream>
+#include<vector>
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+void SplitIt(std::string& str, std::vector<std::string>& result){
+    std::istringstream iss(str);
+    std::string sample{""};
+    char separator;
 
-# Precompiled Headers
-*.gch
-*.pch
+    std::cout << "Give me the symbol based of which we will split the string:";
+    std::cin >> separator;
+    while(std::getline(iss,sample,separator)){ result.push_back(sample); }
+    return;
+}
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+int main(){
+    std::string str = "I-want-to-be-splitted-into-tokens";
+    std::vector<std::string> result;
+    SplitIt(str,result);
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+    for(auto i=0; i<result.size(); i++){ std::cout << result[i] << std::endl; }
+    return 0;
+}
